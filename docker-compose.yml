@@ -1,0 +1,21 @@
+
+version: "3"
+
+services:
+    api_huggy_telefone:
+        build: .
+        image: micks/api_huggy_telefone:1.0
+        container_name: api_huggy_telefone
+        network_mode: bridge
+        env_file:
+            - ./.env
+        ports:
+            - '8102:8102'
+            - '8103:8103'
+        tty: true
+        restart: always
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /var/lib/letsencrypt:/var/lib/letsencrypt
+        environment:        
+            - TZ=America/Fortaleza
